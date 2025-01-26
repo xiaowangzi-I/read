@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".log.LogActivity">
+
+    <ImageView
+        android:id="@+id/iv_wen"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/wen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_userNameLog"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_wen"
+        app:hintAnimationEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_userNameLog"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:drawableStart="@drawable/baseline_person_24"
+            android:hint="@string/til_hintUserName"
+            android:textColorHint="@color/gray"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_userPasswordLog"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_userNameLog"
+        app:hintAnimationEnabled="true"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_userPasswordLog"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:drawableStart="@drawable/baseline_key_24"
+            android:hint="@string/til_hintUserPassword"
+            android:textColorHint="@color/gray"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/bt_log"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/blue"
+        android:text="@string/bt_textLog"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_userPasswordLog"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <Button
+        android:id="@+id/bt_toResign"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_log"
+        android:text="@string/bt_textToResign"
+        android:gravity="top"
+        android:textColor="@color/blue"
+        android:backgroundTint="@color/transparent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
