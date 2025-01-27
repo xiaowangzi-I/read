@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.read.R;
 import com.example.read.home.HomeActivity;
+import com.example.read.save.SaveIsLogged;
 import com.example.read.save.SaveUserInformation;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -39,6 +40,7 @@ public class LogActivity extends AppCompatActivity {
         initEvent();
     }
 
+//    初始化
     private void initView() {
         mEtUserName = findViewById(R.id.et_userNameLog);
         mEtUserPassword = findViewById(R.id.et_userPasswordLog);
@@ -46,6 +48,7 @@ public class LogActivity extends AppCompatActivity {
         mBtToResign = findViewById(R.id.bt_toResign);
     }
 
+//    检测用户输入以及登录、注册
     private void initEvent() {
         mBtLog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,19 +65,24 @@ public class LogActivity extends AppCompatActivity {
         });
     }
 
+//    登录跳转到主页
     private void logEvent() {
-        String userName = mEtUserName.getText().toString();
-        String userPassword = mEtUserPassword.getText().toString();
+        String userName = mEtUserName.getText() == null ? "" : mEtUserName.getText().toString();
+        String userPassword = mEtUserPassword.getText() == null ? "" : mEtUserPassword.getText().toString();
         SaveUserInformation saveUserInformation = new SaveUserInformation(this);
-        if (Objects.equals(userName, saveUserInformation.getUserName()) && Objects.equals(userPassword, saveUserInformation.getUserPassword()) && !userName.isEmpty() && !userPassword.isEmpty()) {
-            Intent intent = new Intent(LogActivity.this, HomeActivity.class);
+        SaveIsLogged saveIsLogged = new SaveIsLogged(this);
+        Intent intent = new Intent(LogActivity.this, HomeActivity.class);
+        if (Objects.equals(userName, saveUserInformation.getUserName()) && Objects.equals(userPassword, saveUserInformation.getUserPassword()) && (!userName.isEmpty() && !userPassword.isEmpty())) {
             Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+        } else if (saveIsLogged.getIsLogged()) {
             startActivity(intent);
         } else {
             Toast.makeText(this, "登录失败", Toast.LENGTH_SHORT).show();
         }
     }
 
+//    跳转到注册界面
     private void toResignEvent() {
         Intent intent = new Intent(LogActivity.this, ResignActivity.class);
         startActivity(intent);
