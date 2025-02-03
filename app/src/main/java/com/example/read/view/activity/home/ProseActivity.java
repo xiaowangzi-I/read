@@ -37,11 +37,7 @@ public class ProseActivity extends AppCompatActivity {
             return insets;
         });
         initView();
-        try {
-            initEvent();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+        initEvent();
     }
 
     private void initView() {
@@ -50,12 +46,11 @@ public class ProseActivity extends AppCompatActivity {
         mTvProseContent = findViewById(R.id.tv_proseContent);
     }
 
-    private void initEvent() throws MalformedURLException {
+    private void initEvent() {
         showProse();
     }
 
-    private void showProse() throws MalformedURLException {
-        GetEssay.getAProse(this);
+    private void showProse() {
         Essay essay = Essay.PROSE;
         String getEssay = essay.get(this);
         JSONGetProse jsonGetProse = JSONGetProse.parseJSON(getEssay);

@@ -13,9 +13,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.read.R;
+import com.example.read.repository.network.GetEssay;
 import com.example.read.utils.saveutils.SaveIsLogged;
 import com.example.read.utils.IntentUtils;
 import com.example.read.utils.NetworkUtils;
+
+import java.net.MalformedURLException;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -36,7 +39,11 @@ public class HomeActivity extends AppCompatActivity {
             return insets;
         });
         initView();
-        initEvent();
+        try {
+            initEvent();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void initView () {
@@ -47,10 +54,10 @@ public class HomeActivity extends AppCompatActivity {
         mBtProse = findViewById(R.id.bt_prose);
     }
 
-    public void initEvent () {
+    public void initEvent () throws MalformedURLException {
         SaveIsLogged saveIsLogged = new SaveIsLogged(this);
         saveIsLogged.setIsLogged(true);
-        checkNetworkState();
+        getEssay();
 
         mBtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,12 +89,6 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void checkNetworkState () {
-        if (!NetworkUtils.isNetworkAvailable(this)) {
-            Toast.makeText(this, "网络不可用", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     private void toPoetry () {
         if (NetworkUtils.isNetworkAvailable(this)) {
             IntentUtils.intent(this, PoetryActivity.class);
@@ -107,6 +108,16 @@ public class HomeActivity extends AppCompatActivity {
     private void toProse () {
         if (NetworkUtils.isNetworkAvailable(this)) {
             IntentUtils.intent(this, ProseActivity.class);
+        } else {
+            Toast.makeText(this, "网络不可用", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void getEssay() throws MalformedURLException {
+        if (NetworkUtils.isNetworkAvailable(this)) {
+            GetEssay.getNews(this);
+            GetEssay.getAPoetry(this);
+            GetEssay.getAProse(this);
         } else {
             Toast.makeText(this, "网络不可用", Toast.LENGTH_SHORT).show();
         }

@@ -5,8 +5,6 @@ import com.google.gson.Gson;
 import java.util.List;
 
 public class JSONGetNews {
-    private int code;
-    private String msg;
     private GetNewsResult result;
 
     public GetNewsResult getResult() {

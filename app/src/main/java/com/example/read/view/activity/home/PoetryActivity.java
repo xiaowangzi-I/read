@@ -36,11 +36,7 @@ public class PoetryActivity extends AppCompatActivity {
             return insets;
         });
         initView();
-        try {
-            initEvent();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+        initEvent();
     }
 
     private void initView () {
@@ -49,12 +45,11 @@ public class PoetryActivity extends AppCompatActivity {
         mTvPoetryContent = findViewById(R.id.tv_PoetryContent);
     }
 
-    private void initEvent () throws MalformedURLException {
+    private void initEvent () {
         showPoetry();
     }
 
-    private void showPoetry () throws MalformedURLException {
-        GetEssay.getAPoetry(this);
+    private void showPoetry () {
         Essay essay = Essay.POETRY;
         String getEssay = essay.get(this);
         JSONGetPoetry jsonGetPoetry = JSONGetPoetry.parseJSON(getEssay);

@@ -41,24 +41,19 @@ public class NewsActivity extends AppCompatActivity {
             return insets;
         });
         initView();
-        try {
-            initEvent();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+        initEvent();
     }
 
     private void initView () {
         mRvNews = findViewById(R.id.rv_news);
     }
 
-    private void initEvent () throws MalformedURLException {
+    private void initEvent () {
         mRvNews.setLayoutManager(new LinearLayoutManager(this));
         showNews();
     }
 
-    private void showNews () throws MalformedURLException {
-        GetEssay.getNews(this);
+    private void showNews () {
         Essay essay = Essay.NEWS;
         String getEssay = essay.get(this);
         JSONGetNews jsonGetNews = JSONGetNews.parseJSON(getEssay);
