@@ -23,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button mBtSearch;
     private Button mBtPoetry;
     private Button mBtNews;
+    private Button mBtProse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         mBtPoetry = findViewById(R.id.bt_poetry);
         mBtSearch = findViewById(R.id.bt_search);
         mBtNews = findViewById(R.id.bt_news);
+        mBtProse = findViewById(R.id.bt_prose);
     }
 
     public void initEvent () {
@@ -68,6 +70,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 toNews();
+            }
+        });
+
+        mBtProse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toProse();
             }
         });
 
@@ -97,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void toProse () {
         if (NetworkUtils.isNetworkAvailable(this)) {
-            IntentUtils.intent(this, NewsActivity.class);
+            IntentUtils.intent(this, ProseActivity.class);
         } else {
             Toast.makeText(this, "网络不可用", Toast.LENGTH_SHORT).show();
         }

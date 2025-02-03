@@ -28,10 +28,6 @@ public class JSONGetNews {
             public String getTitle() {
                 return title;
             }
-
-            public String getTime() {
-                return mtime;
-            }
         }
     }
 

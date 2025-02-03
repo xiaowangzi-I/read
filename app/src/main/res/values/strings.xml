@@ -13,4 +13,5 @@
     <string name="tv_textPoetry">诗词</string>
     <string name="tv_textNews">简报</string>
     <string name="tv_textNewsTime">今日简报</string>
+    <string name="tv_textProse">散文</string>
 </resources>

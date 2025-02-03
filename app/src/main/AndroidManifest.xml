@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Read"
         tools:targetApi="31">
         <activity
+            android:name=".view.activity.home.ProseActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.home.NewsActivity"
             android:exported="false" />
         <activity

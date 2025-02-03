@@ -19,4 +19,9 @@ public class GetEssay {
         URL url = new URL("https://whyta.cn/api/tx/bulletin?key=96f163cda80b");
         NetworkUtils.networkRequestsGet(url, context, Essay.NEWS);
     }
+
+    public static void getAProse(Context context) throws MalformedURLException {
+        URL url = new URL("https://v2.alapi.cn/api/one?token=LwExDtUWhF3rH5ib");
+        NetworkUtils.networkRequestsGet(url, context, Essay.PROSE);
+    }
 }

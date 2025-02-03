@@ -1,6 +1,7 @@
 package com.example.read.view.activity.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,22 +15,22 @@ import com.example.read.R;
 import com.example.read.repository.model.Essay;
 import com.example.read.repository.network.GetEssay;
 import com.example.read.utils.IntentUtils;
+import com.example.read.utils.jsonutils.JSONGetProse;
 import com.example.read.utils.saveutils.SaveGetEssay;
-import com.example.read.utils.jsonutils.JSONGetPoetry;
 
 import java.net.MalformedURLException;
 
-public class PoetryActivity extends AppCompatActivity {
+public class ProseActivity extends AppCompatActivity {
 
-    private TextView mTvPoetryTitle;
-    private TextView mTvPoetryAuthor;
-    private TextView mTvPoetryContent;
+    private TextView mTvProseTitle;
+    private TextView mTvProseAuthor;
+    private TextView mTvProseContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_poetry);
+        setContentView(R.layout.activity_prose);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -43,28 +44,31 @@ public class PoetryActivity extends AppCompatActivity {
         }
     }
 
-    private void initView () {
-        mTvPoetryTitle = findViewById(R.id.tv_poetryTitle);
-        mTvPoetryAuthor = findViewById(R.id.tv_poetryAuthor);
-        mTvPoetryContent = findViewById(R.id.tv_PoetryContent);
+    private void initView() {
+        mTvProseTitle = findViewById(R.id.tv_proseTitle);
+        mTvProseAuthor = findViewById(R.id.tv_proseAuthor);
+        mTvProseContent = findViewById(R.id.tv_proseContent);
     }
 
-    private void initEvent () throws MalformedURLException {
-        showPoetry();
+    private void initEvent() throws MalformedURLException {
+        showProse();
     }
 
-    private void showPoetry () throws MalformedURLException {
-        GetEssay.getAPoetry(this);
-        Essay essay = Essay.POETRY;
+    private void showProse() throws MalformedURLException {
+        GetEssay.getAProse(this);
+        Essay essay = Essay.PROSE;
         String getEssay = essay.get(this);
-        JSONGetPoetry jsonGetPoetry = JSONGetPoetry.parseJSON(getEssay);
-        if (jsonGetPoetry != null && jsonGetPoetry.getResult() != null && jsonGetPoetry.getResult().getList() != null) {
-            JSONGetPoetry.GetPoetryResult.GetPoetry poetry = jsonGetPoetry.getResult().getList().get(0);
-            mTvPoetryTitle.setText(poetry.getTitle());
-            mTvPoetryAuthor.setText(poetry.getAuthor());
-            String content = poetry.getContent();
-            mTvPoetryContent.setText(poetry.getContent());
-
+        JSONGetProse jsonGetProse = JSONGetProse.parseJSON(getEssay);
+        if (jsonGetProse != null && jsonGetProse.getData() != null) {
+            JSONGetProse.GetProseData prose = jsonGetProse.getData();
+            mTvProseTitle.setText(prose.getTitle());
+            mTvProseAuthor.setText(prose.getAuthor());
+            String content = prose.getContent();
+            content = content.replaceAll("<div[^>]*>.*?</div>", "");
+            content = content.replaceAll("&nbsp;", " ");
+            content = content.replaceAll("</p><p>", "\n");
+            content = content.replaceAll("<[^>]*>", "");
+            mTvProseContent.setText(content);
         } else {
             Toast.makeText(this, "解析失败", Toast.LENGTH_SHORT).show();
             IntentUtils.intent(this, HomeActivity.class);
