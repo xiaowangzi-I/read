@@ -1,4 +1,4 @@
-package com.example.read.log;
+package com.example.read.view.activity.log;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.read.R;
-import com.example.read.home.HomeActivity;
-import com.example.read.save.SaveIsLogged;
-import com.example.read.save.SaveUserInformation;
+import com.example.read.view.activity.home.HomeActivity;
+import com.example.read.utils.saveutils.SaveIsLogged;
+import com.example.read.utils.saveutils.SaveUserInformation;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
@@ -38,6 +38,12 @@ public class LogActivity extends AppCompatActivity {
         });
         initView();
         initEvent();
+        SaveIsLogged saveIsLogged = new SaveIsLogged(this);
+        Intent intent = new Intent(LogActivity.this, HomeActivity.class);
+        if (saveIsLogged.getIsLogged()) {
+            startActivity(intent);
+            finish();
+        }
     }
 
 //    初始化
@@ -70,13 +76,11 @@ public class LogActivity extends AppCompatActivity {
         String userName = mEtUserName.getText() == null ? "" : mEtUserName.getText().toString();
         String userPassword = mEtUserPassword.getText() == null ? "" : mEtUserPassword.getText().toString();
         SaveUserInformation saveUserInformation = new SaveUserInformation(this);
-        SaveIsLogged saveIsLogged = new SaveIsLogged(this);
         Intent intent = new Intent(LogActivity.this, HomeActivity.class);
         if (Objects.equals(userName, saveUserInformation.getUserName()) && Objects.equals(userPassword, saveUserInformation.getUserPassword()) && (!userName.isEmpty() && !userPassword.isEmpty())) {
             Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
             startActivity(intent);
-        } else if (saveIsLogged.getIsLogged()) {
-            startActivity(intent);
+            finish();
         } else {
             Toast.makeText(this, "登录失败", Toast.LENGTH_SHORT).show();
         }

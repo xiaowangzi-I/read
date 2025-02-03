@@ -1,4 +1,4 @@
-package com.example.read.log;
+package com.example.read.view.activity.log;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +15,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.read.R;
-import com.example.read.home.HomeActivity;
-import com.example.read.save.SaveUserInformation;
+import com.example.read.view.activity.home.HomeActivity;
+import com.example.read.utils.saveutils.SaveUserInformation;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -124,6 +124,7 @@ public class ResignActivity extends AppCompatActivity {
         }
         Intent intent = new Intent(ResignActivity.this, HomeActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private boolean userNameRight(String input) {

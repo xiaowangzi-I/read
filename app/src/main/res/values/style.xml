@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="searchBox">
+        <item name="android:background">@drawable/search_box_background</item>
+    </style>
+
+    <style name="search">
+        <item name="android:background">@drawable/search_background</item>
+    </style>
+
+    <style name="RoundedCornerStyle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+</resources>

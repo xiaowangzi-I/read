@@ -5,12 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".log.LogActivity">
+    tools:context=".view.activity.log.LogActivity">
 
     <ImageView
         android:id="@+id/iv_wen"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/wen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

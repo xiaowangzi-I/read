@@ -1,27 +1,29 @@
-package com.example.utils.jsonutils.poetry;
+package com.example.read.utils.jsonutils;
+
+import com.google.gson.Gson;
 
 import java.util.List;
 
 
 
-public class GetPoetry {
+public class JSONGetPoetry {
     private int code;
     private String msg;
-    private Result result;
+    private GetPoetryResult result;
 
-    public Result getResult() {
+    public GetPoetryResult getResult() {
         return result;
     }
 
-    public static class Result {
-        private List<Poetry> list;
+    public static class GetPoetryResult {
+        private List<GetPoetry> list;
 
-        public List<Poetry> getList() {
+        public List<GetPoetry> getList() {
             return list;
         }
 
 
-        public static class Poetry {
+        public static class GetPoetry {
             private String title;
             private String content;
             private String author;
@@ -38,5 +40,10 @@ public class GetPoetry {
                 return content;
             }
         }
+    }
+
+    public static JSONGetPoetry parseJSON(String jsonString) {
+        Gson gson = new Gson();
+        return gson.fromJson(jsonString, JSONGetPoetry.class);
     }
 }

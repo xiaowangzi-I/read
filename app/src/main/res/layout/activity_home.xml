@@ -5,15 +5,105 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.HomeActivity">
+    tools:context=".view.activity.home.HomeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.example.read.utils.views.SearchBoxView
+                android:id="@+id/sb_home"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="150dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <Button
+                android:id="@+id/bt_poetry"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="100dp"
+                app:layout_constraintEnd_toStartOf="@+id/bt_news"
+                app:layout_constraintStart_toStartOf="@id/sb_home"
+                app:layout_constraintTop_toBottomOf="@+id/sb_home" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_poetry"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/poetry"
+                app:shapeAppearanceOverlay="@style/RoundedCornerStyle"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_poetry"
+                app:layout_constraintEnd_toEndOf="@+id/bt_poetry"
+                app:layout_constraintStart_toStartOf="@+id/bt_poetry"
+                app:layout_constraintTop_toTopOf="@+id/bt_poetry" />
+
+            <TextView
+                android:id="@+id/tv_poetry"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:background="@drawable/tv_essay_background"
+                android:gravity="center"
+                android:text="@string/tv_textPoetry"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_poetry"
+                app:layout_constraintEnd_toEndOf="@+id/bt_poetry"
+                app:layout_constraintStart_toStartOf="@+id/bt_poetry" />
+
+            <Button
+                android:id="@+id/bt_news"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_poetry"
+                app:layout_constraintEnd_toEndOf="@+id/sb_home"
+                app:layout_constraintTop_toTopOf="@+id/bt_poetry" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_news"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/news"
+                app:shapeAppearanceOverlay="@style/RoundedCornerStyle"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_news"
+                app:layout_constraintEnd_toEndOf="@+id/bt_news"
+                app:layout_constraintStart_toEndOf="@+id/bt_poetry"
+                app:layout_constraintTop_toTopOf="@+id/bt_news" />
+
+            <TextView
+                android:id="@+id/tv_news"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:background="@drawable/tv_essay_background"
+                android:gravity="center"
+                android:text="@string/tv_textNews"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_news"
+                app:layout_constraintEnd_toEndOf="@+id/bt_news"
+                app:layout_constraintStart_toStartOf="@+id/bt_news" />
+
+            <Button
+                android:id="@+id/bt_prose"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintEnd_toEndOf="@+id/bt_poetry"
+                app:layout_constraintStart_toStartOf="@+id/bt_poetry"
+                app:layout_constraintTop_toBottomOf="@+id/bt_poetry" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

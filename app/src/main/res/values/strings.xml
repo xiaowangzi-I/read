@@ -5,4 +5,12 @@
     <string name="bt_textLog">登录</string>
     <string name="bt_textToResign">没有账号？立即注册</string>
     <string name="bt_textResign">注册</string>
+    <string name="todo">TODO</string>
+    <string name="bt_hintSearch">搜索</string>
+    <string name="tv_textPoetryTitle">标题</string>
+    <string name="tv_textPoetryAuthor">作者</string>
+    <string name="tv_textPoetryContent">内容</string>
+    <string name="tv_textPoetry">诗词</string>
+    <string name="tv_textNews">简报</string>
+    <string name="tv_textNewsTime">今日简报</string>
 </resources>
