@@ -24,4 +24,9 @@ public class GetEssay {
         URL url = new URL("https://v2.alapi.cn/api/one?token=LwExDtUWhF3rH5ib");
         NetworkUtils.networkRequestsGet(url, context, Essay.PROSE);
     }
+
+    public static void getDailyNews(Context context) throws MalformedURLException {
+        URL url = new URL("https://v3.alapi.cn/api/zhihu?token=ucjjjrduhgtia30hr6xfvmtb85rsli");
+        NetworkUtils.networkRequestsGet(url, context, Essay.DAILYNEWS);
+    }
 }

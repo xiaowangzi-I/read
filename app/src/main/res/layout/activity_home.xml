@@ -126,6 +126,38 @@
                 app:layout_constraintEnd_toEndOf="@+id/bt_prose"
                 app:layout_constraintStart_toStartOf="@+id/bt_prose" />
 
+            <Button
+                android:id="@+id/bt_dailyNews"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintEnd_toEndOf="@+id/bt_news"
+                app:layout_constraintStart_toEndOf="@+id/bt_prose"
+                app:layout_constraintTop_toBottomOf="@+id/bt_news" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_dailyNews"
+                app:shapeAppearanceOverlay="@style/RoundedCornerStyle"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/dailynews"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_dailyNews"
+                app:layout_constraintEnd_toEndOf="@+id/bt_dailyNews"
+                app:layout_constraintStart_toStartOf="@+id/bt_dailyNews"
+                app:layout_constraintTop_toTopOf="@+id/bt_dailyNews" />
+
+            <TextView
+                android:id="@+id/tv_dailyNews"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:text="@string/tv_textDailyNews"
+                android:background="@drawable/tv_essay_background"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_dailyNews"
+                app:layout_constraintEnd_toEndOf="@+id/bt_dailyNews"
+                app:layout_constraintStart_toStartOf="@+id/bt_dailyNews" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

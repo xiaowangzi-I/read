@@ -7,10 +7,14 @@ import android.net.NetworkCapabilities;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.read.R;
 import com.example.read.repository.model.Essay;
 import com.example.read.utils.saveutils.SaveGetEssay;
 
@@ -56,6 +60,7 @@ public class NetworkUtils {
                     response.close();
                     new Handler(Looper.getMainLooper()).post(() -> {
                         essay.set(context, responseData);
+                        Log.i("ttttt", responseData);
                     });
                 } else {
                     new Handler(Looper.getMainLooper()).post(() -> {
@@ -65,4 +70,18 @@ public class NetworkUtils {
             }
         });
     }
+
+    public static void imageRequest(String url, Context context, ImageView imageView) {
+        RequestOptions options = new RequestOptions()
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.failedload)
+                .centerCrop();
+
+        Glide.with(context)
+                .load(url)
+                .apply(options)
+                .into(imageView);
+    }
+
+
 }

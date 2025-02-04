@@ -27,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button mBtPoetry;
     private Button mBtNews;
     private Button mBtProse;
+    private Button mBtDailyNews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +53,13 @@ public class HomeActivity extends AppCompatActivity {
         mBtSearch = findViewById(R.id.bt_search);
         mBtNews = findViewById(R.id.bt_news);
         mBtProse = findViewById(R.id.bt_prose);
+        mBtDailyNews = findViewById(R.id.bt_dailyNews);
     }
 
     public void initEvent () throws MalformedURLException {
         SaveIsLogged saveIsLogged = new SaveIsLogged(this);
         saveIsLogged.setIsLogged(true);
+
         getEssay();
 
         mBtSearch.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +90,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        mBtDailyNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toDailyNews();
+            }
+        });
+
     }
 
     private void toPoetry () {
@@ -113,11 +123,20 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    private void toDailyNews () {
+        if (NetworkUtils.isNetworkAvailable(this)) {
+            IntentUtils.intent(this, DailyNewsActivity.class);
+        } else {
+            Toast.makeText(this, "网络不可用", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void getEssay() throws MalformedURLException {
         if (NetworkUtils.isNetworkAvailable(this)) {
             GetEssay.getNews(this);
             GetEssay.getAPoetry(this);
             GetEssay.getAProse(this);
+            GetEssay.getDailyNews(this);
         } else {
             Toast.makeText(this, "网络不可用", Toast.LENGTH_SHORT).show();
         }

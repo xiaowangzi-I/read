@@ -5,16 +5,25 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.home.NewsActivity">
+    tools:context=".view.activity.DailyNewsWebActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_news"
+    <WebView
+        android:id="@+id/wv_dailyNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/titaniumWhite"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    
+
+    <ProgressBar
+        android:id="@+id/pb_dailyNews"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:max="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

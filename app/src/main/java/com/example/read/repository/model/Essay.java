@@ -39,6 +39,18 @@ public enum Essay {
         public String get(Context context) {
             return new SaveGetEssay(context).getProse();
         }
+    },
+
+    DAILYNEWS {
+        @Override
+        public void set(Context context, String responseData) {
+            new SaveGetEssay(context).setDailyNews(responseData);
+        }
+
+        @Override
+        public String get(Context context) {
+            return new SaveGetEssay(context).getDailyNews();
+        }
     };
 
     public abstract void set(Context context, String responseData);
