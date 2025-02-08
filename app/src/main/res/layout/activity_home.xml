@@ -5,7 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.home.HomeActivity">
+    android:background="@color/lightGray"
+    tools:context=".view.activity.home.HomeActivity"
+    tools:ignore="ExtraText">
+
+    <android.widget.Button
+        android:id="@+id/bt_menu"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@drawable/menu"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,6 +38,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="@string/tv_textDividingLine1"
+                android:textColor="@color/gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/bt_poetry" />
 
             <Button
                 android:id="@+id/bt_poetry"
@@ -158,6 +180,49 @@
                 app:layout_constraintEnd_toEndOf="@+id/bt_dailyNews"
                 app:layout_constraintStart_toStartOf="@+id/bt_dailyNews" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_textDividingLine2"
+                android:textColor="@color/gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/bt_deepRead"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/bt_deepRead"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_dailyNews"
+                android:layout_marginTop="100dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_deepread"
+                app:shapeAppearanceOverlay="@style/RoundedCornerStyle"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:src="@drawable/deepread"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_deepRead"
+                app:layout_constraintEnd_toEndOf="@+id/bt_deepRead"
+                app:layout_constraintStart_toStartOf="@+id/bt_deepRead"
+                app:layout_constraintTop_toTopOf="@+id/bt_deepRead" />
+
+            <TextView
+                android:id="@+id/tv_DeepRead"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:text="@string/tv_textDeepRead"
+                android:background="@drawable/tv_essay_background"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_deepRead"
+                app:layout_constraintEnd_toEndOf="@+id/bt_deepRead"
+                app:layout_constraintStart_toStartOf="@+id/bt_deepRead" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.read.R;
 import com.example.read.repository.model.Essay;
-import com.example.read.utils.saveutils.SaveGetEssay;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,7 +39,7 @@ public class NetworkUtils {
         return false;
     }
 //发送GET请求
-    public static void networkRequestsGet(URL url, Context context, Essay essay) {
+    public static void networkRequestAndSavesGet(URL url, Context context, Essay essay) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 
@@ -69,6 +68,40 @@ public class NetworkUtils {
                 }
             }
         });
+    }
+
+    public static void networkRequestsGet(URL url, Context context, onDataReceivedListener listener) {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    Toast.makeText(context, "请求失败: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful() && response.body() != null) {
+                    String responseData = response.body().string();
+                    response.close();
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        listener.onDataReceive(responseData);
+                    });
+                } else {
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        Toast.makeText(context, "请求失败，错误码: " + response.code(), Toast.LENGTH_SHORT).show();
+                    });
+                }
+            }
+        });
+    }
+
+    public interface onDataReceivedListener{
+        void onDataReceive(String responseData);
     }
 
     public static void imageRequest(String url, Context context, ImageView imageView) {

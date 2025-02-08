@@ -12,18 +12,17 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.read.R;
 import com.example.read.repository.model.Essay;
-import com.example.read.repository.network.GetEssay;
 import com.example.read.utils.IntentUtils;
-import com.example.read.utils.saveutils.SaveGetEssay;
 import com.example.read.utils.jsonutils.JSONGetPoetry;
-
-import java.net.MalformedURLException;
+import com.example.read.utils.views.SearchBoxView;
+import com.example.read.view.activity.DictionaryActivity;
 
 public class PoetryActivity extends AppCompatActivity {
 
     private TextView mTvPoetryTitle;
     private TextView mTvPoetryAuthor;
     private TextView mTvPoetryContent;
+    private SearchBoxView mSbPoetryDictionary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +42,17 @@ public class PoetryActivity extends AppCompatActivity {
         mTvPoetryTitle = findViewById(R.id.tv_poetryTitle);
         mTvPoetryAuthor = findViewById(R.id.tv_poetryAuthor);
         mTvPoetryContent = findViewById(R.id.tv_PoetryContent);
+        mSbPoetryDictionary = findViewById(R.id.sb_poetry);
     }
 
     private void initEvent () {
+        mSbPoetryDictionary.setOnSearchClickListener(new SearchBoxView.OnSearchClickListener() {
+            @Override
+            public void onSearch(String searchText) {
+                IntentUtils.intentPutExtraString(PoetryActivity.this, DictionaryActivity.class, searchText, "keyIntentWord");
+            }
+        });
+
         showPoetry();
     }
 
@@ -57,7 +64,6 @@ public class PoetryActivity extends AppCompatActivity {
             JSONGetPoetry.GetPoetryResult.GetPoetry poetry = jsonGetPoetry.getResult().getList().get(0);
             mTvPoetryTitle.setText(poetry.getTitle());
             mTvPoetryAuthor.setText(poetry.getAuthor());
-            String content = poetry.getContent();
             mTvPoetryContent.setText(poetry.getContent());
 
         } else {

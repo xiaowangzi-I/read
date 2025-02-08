@@ -10,6 +10,7 @@ public class SaveGetEssay {
     private static final String prefsProse = "prose";
     private static final String prefsDailyNews = "dailyNews";
 
+
     private static final String keyPoetry = "keyPoetry";
     private static final String keyNews = "keyNews";
     private static final String keyProse = "keyProse";

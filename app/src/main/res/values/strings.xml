@@ -15,4 +15,8 @@
     <string name="tv_textNewsTime">今日简报</string>
     <string name="tv_textProse">散文</string>
     <string name="tv_textDailyNews">知乎日报</string>
+    <string name="menu_titleLogout">注销</string>
+    <string name="tv_textDividingLine1">-------简单阅读</string>
+    <string name="tv_textDeepRead">搜书</string>
+    <string name="tv_textDividingLine2">-------深度阅读</string>
 </resources>

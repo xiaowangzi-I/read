@@ -6,4 +6,8 @@
     <color name="blue">#0000FF</color>
     <color name="transparent">#00000000</color>
     <color name="titaniumWhite">#F5F5F5</color>
+    <color name="translucentBlack">#80000000</color>
+    <color name="lightGray">#F5F5F5</color>
+    <color name="silverGray">#C0C0C0</color>
+
 </resources>
