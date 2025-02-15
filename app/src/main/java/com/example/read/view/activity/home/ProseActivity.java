@@ -19,10 +19,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.read.R;
 import com.example.read.repository.model.Essay;
-import com.example.read.repository.network.GetEssay;
 import com.example.read.utils.IntentUtils;
 import com.example.read.utils.jsonutils.JSONGetProse;
-import com.example.read.utils.saveutils.SaveGetEssay;
 import com.example.read.utils.views.BackView;
 
 public class ProseActivity extends AppCompatActivity {

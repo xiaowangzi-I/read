@@ -21,14 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.read.R;
 import com.example.read.repository.model.Essay;
-import com.example.read.repository.network.GetEssay;
 import com.example.read.utils.IntentUtils;
 import com.example.read.utils.jsonutils.JSONGetNews;
-import com.example.read.utils.saveutils.SaveGetEssay;
 import com.example.read.utils.views.BackView;
 import com.example.read.view.adapter.NewsAdapter;
 
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 

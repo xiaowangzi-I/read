@@ -30,7 +30,6 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.read.R;
 import com.example.read.utils.IntentUtils;
 import com.example.read.utils.views.BackView;
-import com.example.read.view.activity.home.HomeActivity;
 
 public class DeepReadActivity extends AppCompatActivity {
     /**
@@ -51,10 +50,9 @@ public class DeepReadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);  // 启用边缘到边缘显示
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_deep_read);
 
-        // 设置窗口内边距监听器，适配系统栏
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

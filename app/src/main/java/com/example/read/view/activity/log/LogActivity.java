@@ -8,11 +8,9 @@ package com.example.read.view.activity.log;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,7 +28,6 @@ import com.example.read.view.activity.home.HomeActivity;
 import com.example.read.utils.saveutils.SaveIsLogged;
 import com.example.read.utils.saveutils.SaveUserInformation;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
@@ -140,7 +137,7 @@ public class LogActivity extends AppCompatActivity {
     private void setImage(String input) {
         SaveUserInformation saveUserInformation = new SaveUserInformation(this);
         String userName = saveUserInformation.getUserName() == null ? "" : saveUserInformation.getUserName();
-        if (input.equals(userName)) {
+        if (input.equals(userName) && userName != "") {
             Bitmap bitmap = SavePortrait.getImage(LogActivity.this);
             mIvPortrait.setImageBitmap(bitmap);
         }

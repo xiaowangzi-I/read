@@ -20,9 +20,7 @@
         <activity
             android:name=".view.activity.menu.ChangeUserInformationActivity"
             android:exported="false" />
-        <activity
-            android:name=".view.activity.AccountActivity"
-            android:exported="false" />
+
         <activity
             android:name=".view.activity.menu.PersonCenterActivity"
             android:exported="false" />

@@ -83,6 +83,25 @@ public class HomeActivity extends AppCompatActivity {
      */
     private Button mBtDeepRead;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_home);
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+        initView();
+        try {
+            initEvent();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * 初始化视图组件。
      */

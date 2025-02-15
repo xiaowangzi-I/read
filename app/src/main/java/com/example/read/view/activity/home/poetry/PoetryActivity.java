@@ -77,6 +77,8 @@ public class PoetryActivity extends AppCompatActivity {
         });
 
         mSbPoetryDictionary.setEtHint("新华字典");
+
+        showPoetry();
     }
 
     /**
