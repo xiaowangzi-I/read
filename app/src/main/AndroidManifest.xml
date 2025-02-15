@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
 
     <application
         android:allowBackup="true"
@@ -16,16 +18,39 @@
         android:theme="@style/Theme.Read"
         tools:targetApi="31">
         <activity
-            android:name=".view.activity.DeepReadActivity"
+            android:name=".view.activity.menu.ChangeUserInformationActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.DictionaryActivity"
+            android:name=".view.activity.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.DailyNewsWebActivity"
+            android:name=".view.activity.menu.PersonCenterActivity"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".view.activity.home.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.home.DailyNewsActivity"
+            android:name=".view.activity.home.DeepReadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.home.poetry.DictionaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.home.dailynews.DailyNewsWebActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.home.dailynews.DailyNewsActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.home.ProseActivity"
@@ -34,7 +59,7 @@
             android:name=".view.activity.home.NewsActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.home.PoetryActivity"
+            android:name=".view.activity.home.poetry.PoetryActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.log.ResignActivity"

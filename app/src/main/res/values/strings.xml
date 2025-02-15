@@ -19,4 +19,10 @@
     <string name="tv_textDividingLine1">-------简单阅读</string>
     <string name="tv_textDeepRead">搜书</string>
     <string name="tv_textDividingLine2">-------深度阅读</string>
+    <string name="menu_titlePersonalCenter">个人中心</string>
+    <string name="tv_textAccountUserName">用户名</string>
+    <string name="tv_textAccountUserPassword">密码</string>
+    <string name="tv_textSetPortrait">设置头像</string>
+    <string name="bt_hintSetAccount">修改账号资料</string>
+    <string name="bt_hintSet">修改</string>
 </resources>

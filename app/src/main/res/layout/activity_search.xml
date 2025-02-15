@@ -5,19 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.home.DeepReadActivity">
+    tools:context=".view.activity.home.SearchActivity">
 
     <WebView
-        android:id="@+id/wv_deepRead"
+        android:id="@+id/wv_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ProgressBar
-        android:id="@+id/pb_deepRead"
+        android:id="@+id/pb_home"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         style="@android:style/Widget.ProgressBar.Horizontal"
@@ -25,12 +25,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.example.read.utils.views.BackView
-        android:id="@+id/bv_deepRead"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

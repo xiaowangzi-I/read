@@ -1,6 +1,13 @@
+/**
+* description ：它从 Essay.NEWS 枚举实例中获取数据 TODO:NewsActivity 是一个用于阅读新闻的 Activity。
+* author : 王子旻
+* email : 2461095759@qq.com
+* date : 2025年2月2日，17:03
+*/
 package com.example.read.view.activity.home;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -18,6 +25,7 @@ import com.example.read.repository.network.GetEssay;
 import com.example.read.utils.IntentUtils;
 import com.example.read.utils.jsonutils.JSONGetNews;
 import com.example.read.utils.saveutils.SaveGetEssay;
+import com.example.read.utils.views.BackView;
 import com.example.read.view.adapter.NewsAdapter;
 
 import java.net.MalformedURLException;
@@ -26,6 +34,7 @@ import java.util.List;
 
 public class NewsActivity extends AppCompatActivity {
 
+    private BackView mBvNews;
     private RecyclerView mRvNews;
     private NewsAdapter newsAdapter;
     private List<JSONGetNews.GetNewsResult.GetNews> newsList;
@@ -44,24 +53,43 @@ public class NewsActivity extends AppCompatActivity {
         initEvent();
     }
 
-    private void initView () {
+    /**
+     * 初始化视图组件。
+     */
+    private void initView() {
+        mBvNews = findViewById(R.id.bv_news);
         mRvNews = findViewById(R.id.rv_news);
     }
 
-    private void initEvent () {
+    /**
+     * 初始化事件监听器。
+     */
+    private void initEvent() {
+        mBvNews.setBackClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         mRvNews.setLayoutManager(new LinearLayoutManager(this));
         showNews();
     }
 
-    private void showNews () {
+    /**
+     * 加载并展示新闻列表。
+     */
+    private void showNews() {
         Essay essay = Essay.NEWS;
         String getEssay = essay.get(this);
         JSONGetNews jsonGetNews = JSONGetNews.parseJSON(getEssay);
+
         if (jsonGetNews != null && jsonGetNews.getResult() != null && jsonGetNews.getResult().getList() != null) {
             newsList = new ArrayList<>();
             newsList.addAll(jsonGetNews.getResult().getList());
             newsAdapter = new NewsAdapter(newsList);
             mRvNews.setAdapter(newsAdapter);
+
             DividerItemDecoration mDivider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
             mRvNews.addItemDecoration(mDivider);
         } else {

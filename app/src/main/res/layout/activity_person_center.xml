@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.menu.PersonCenterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_portraitPersonCenter"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/portrait"
+                app:shapeAppearanceOverlay="@style/RoundedStyle"
+                android:layout_marginTop="100dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.example.read.utils.views.BackView
+                android:id="@+id/bv_personCenter"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/bt_portraitPersonCenter"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/transparent"
+                app:layout_constraintStart_toStartOf="@+id/iv_portraitPersonCenter"
+                app:layout_constraintEnd_toEndOf="@+id/iv_portraitPersonCenter"
+                app:layout_constraintTop_toTopOf="@+id/iv_portraitPersonCenter"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_portraitPersonCenter" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:text="@string/tv_textSetPortrait"
+                android:textSize="20sp"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="@+id/iv_portraitPersonCenter"
+                app:layout_constraintEnd_toEndOf="@+id/iv_portraitPersonCenter"
+                app:layout_constraintTop_toBottomOf="@+id/iv_portraitPersonCenter" />
+
+            <TextView
+                android:id="@+id/tv_accountUserNameString"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/tv_textAccountUserName"
+                android:textSize="25sp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/tv_menu_background"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_portraitPersonCenter"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_accountUserName"
+                android:layout_width="285dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="125dp"
+                android:textSize="25sp"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_accountUserNameString"
+                app:layout_constraintStart_toStartOf="@+id/tv_accountUserNameString"
+                app:layout_constraintTop_toTopOf="@+id/tv_accountUserNameString" />
+
+            <TextView
+                android:id="@+id/tv_accountUserPasswordString"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/tv_menu_background"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/tv_textAccountUserPassword"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_accountUserNameString" />
+
+            <TextView
+                android:id="@+id/tv_accountUserPassword"
+                android:layout_width="285dp"
+                android:layout_height="50dp"
+                android:textSize="25sp"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="125dp"
+                app:layout_constraintTop_toTopOf="@+id/tv_accountUserPasswordString"
+                app:layout_constraintEnd_toEndOf="@+id/tv_accountUserPasswordString"
+                app:layout_constraintStart_toStartOf="@+id/tv_accountUserPasswordString" />
+
+            <android.widget.Button
+                android:id="@+id/bt_accountChangeUserInformation"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/bt_hintSetAccount"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
+                app:layout_constraintTop_toBottomOf="@+id/tv_accountUserPasswordString"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/tv_menu_background" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

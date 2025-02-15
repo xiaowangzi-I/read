@@ -4,27 +4,28 @@
     android:layout_height="50dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <EditText
-            android:id="@+id/et_searchBox"
-            style="@style/searchBox"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:drawableStart="@drawable/baseline_search_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/et_searchBox"
+        style="@style/searchBox"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:selectAllOnFocus="true"
+        android:drawableStart="@drawable/baseline_search_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <android.widget.Button
-            android:id="@+id/bt_search"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            style="@style/search"
-            android:hint="@string/bt_hintSearch"
-            android:textColorHint="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/et_searchBox"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+    <android.widget.Button
+        android:id="@+id/bt_search"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        style="@style/search"
+        android:hint="@string/bt_hintSearch"
+        android:textColorHint="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/et_searchBox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

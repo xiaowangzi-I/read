@@ -1,9 +1,21 @@
+/**
+* description ： TODO:实现登录功能
+* author : 王子旻
+* email : 2461095759@qq.com
+* date : 2025年1月25日，22:29
+*/
 package com.example.read.view.activity.log;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -13,14 +25,18 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.read.R;
+import com.example.read.utils.saveutils.SavePortrait;
 import com.example.read.view.activity.home.HomeActivity;
 import com.example.read.utils.saveutils.SaveIsLogged;
 import com.example.read.utils.saveutils.SaveUserInformation;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
 public class LogActivity extends AppCompatActivity {
+
+    private ImageView mIvPortrait;
     private TextInputEditText mEtUserName;
     private TextInputEditText mEtUserPassword;
     private Button mBtLog;
@@ -46,37 +62,61 @@ public class LogActivity extends AppCompatActivity {
         }
     }
 
-//    初始化
+    /**
+     * 初始化视图组件，绑定 UI 元素。
+     */
     private void initView() {
+        mIvPortrait = findViewById(R.id.iv_portraitLog);
         mEtUserName = findViewById(R.id.et_userNameLog);
         mEtUserPassword = findViewById(R.id.et_userPasswordLog);
         mBtLog = findViewById(R.id.bt_log);
         mBtToResign = findViewById(R.id.bt_toResign);
     }
 
-//    检测用户输入以及登录、注册
+    /**
+     * 初始化事件监听器，设置用户名输入监听、登录按钮和注册按钮的点击事件。
+     */
     private void initEvent() {
+        mEtUserName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String input = s.toString();
+                setImage(input); // 根据输入动态设置头像
+            }
+        });
+
         mBtLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logEvent();
+                logEvent(); // 处理登录逻辑
             }
         });
 
         mBtToResign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toResignEvent();
+                toResignEvent(); // 跳转到注册界面
             }
         });
     }
 
-//    登录跳转到主页
+    /**
+     * 处理登录逻辑，验证用户名和密码并跳转到主页。
+     */
     private void logEvent() {
         String userName = mEtUserName.getText() == null ? "" : mEtUserName.getText().toString();
         String userPassword = mEtUserPassword.getText() == null ? "" : mEtUserPassword.getText().toString();
         SaveUserInformation saveUserInformation = new SaveUserInformation(this);
         Intent intent = new Intent(LogActivity.this, HomeActivity.class);
+
         if (Objects.equals(userName, saveUserInformation.getUserName()) && Objects.equals(userPassword, saveUserInformation.getUserPassword()) && (!userName.isEmpty() && !userPassword.isEmpty())) {
             Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
             startActivity(intent);
@@ -86,9 +126,23 @@ public class LogActivity extends AppCompatActivity {
         }
     }
 
-//    跳转到注册界面
+    /**
+     * 跳转到注册界面。
+     */
     private void toResignEvent() {
         Intent intent = new Intent(LogActivity.this, ResignActivity.class);
         startActivity(intent);
+    }
+
+    /**
+     * 根据输入的用户名动态设置头像。
+     */
+    private void setImage(String input) {
+        SaveUserInformation saveUserInformation = new SaveUserInformation(this);
+        String userName = saveUserInformation.getUserName() == null ? "" : saveUserInformation.getUserName();
+        if (input.equals(userName)) {
+            Bitmap bitmap = SavePortrait.getImage(LogActivity.this);
+            mIvPortrait.setImageBitmap(bitmap);
+        }
     }
 }

@@ -7,18 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.log.LogActivity">
 
-    <ImageView
-        android:id="@+id/iv_wen"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_portraitLog"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:contentDescription="@string/todo"
-        android:src="@drawable/wen"
+        android:src="@drawable/portrait"
+        app:shapeAppearanceOverlay="@style/RoundedStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_userNameLog"
@@ -27,7 +27,7 @@
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_wen"
+        app:layout_constraintTop_toBottomOf="@+id/iv_portraitLog"
         app:hintAnimationEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
 
@@ -40,7 +40,7 @@
             android:textColorHint="@color/gray"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,7 +64,7 @@
             android:textColorHint="@color/gray"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,7 +91,7 @@
         android:text="@string/bt_textToResign"
         android:gravity="top"
         android:textColor="@color/blue"
-        android:backgroundTint="@color/transparent"/>
+        android:backgroundTint="@color/transparent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
