@@ -111,9 +111,7 @@ public class DailyNewsWebActivity extends AppCompatActivity {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-                Toast.makeText(view.getContext(), "页面加载失败", Toast.LENGTH_SHORT).show();  // 提示加载失败
                 mPbDailyNews.setVisibility(ProgressBar.GONE);  // 隐藏进度条
-                IntentUtils.intent(DailyNewsWebActivity.this, DailyNewsActivity.class);  // 返回新闻列表
             }
         });
 

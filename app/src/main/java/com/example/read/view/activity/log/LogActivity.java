@@ -139,7 +139,9 @@ public class LogActivity extends AppCompatActivity {
         String userName = saveUserInformation.getUserName() == null ? "" : saveUserInformation.getUserName();
         if (input.equals(userName) && userName != "") {
             Bitmap bitmap = SavePortrait.getImage(LogActivity.this);
-            mIvPortrait.setImageBitmap(bitmap);
+            if (bitmap != null) {
+                mIvPortrait.setImageBitmap(bitmap);
+            }
         }
     }
 }

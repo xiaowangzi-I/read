@@ -47,11 +47,8 @@ public class DictionaryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 启用边缘到边缘显示
         EdgeToEdge.enable(this);
-        // 设置布局文件
         setContentView(R.layout.activity_dictionary);
-        // 设置窗口内边距监听器
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -95,22 +92,19 @@ public class DictionaryActivity extends AppCompatActivity {
             }
         });
 
-        // 显示单词信息
+        // 显示信息
         showWord();
     }
 
     /**
      * 显示单词的详细信息。
-     * 通过网络请求获取单词数据，并解析 JSON 格式的数据展示到界面上。
+     * 通过网络请求获取数据，并解析 JSON 格式的数据展示到界面上。
      *
      * @throws MalformedURLException 如果 URL 格式错误
      */
     private void showWord() throws MalformedURLException {
-        // 从 Intent 中获取传递的单词
         String word = IntentUtils.intentGetExtraString("keyIntentWord");
-        // 构造请求 URL
         URL url = new URL("https://v3.alapi.cn/api/word?token=ucjjjrduhgtia30hr6xfvmtb85rsli&word=" + word);
-        // 发起网络请求
         NetworkUtils.networkRequestsGet(url, this, new NetworkUtils.onDataReceivedListener() {
             @Override
             public void onDataReceive(String responseData) {
